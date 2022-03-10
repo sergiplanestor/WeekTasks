@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">WeekTasks</string>
+    <string name="app_name_pretty">Week Tasks</string>
+
+    <string name="priority_fire">Fire</string>
+    <string name="priority_high">High</string>
+    <string name="priority_medium">Medium</string>
+    <string name="priority_low">Low</string>
+    <string name="priority_turtle">Turtle</string>
+
+    <string name="button_create">Create</string>
+</resources>

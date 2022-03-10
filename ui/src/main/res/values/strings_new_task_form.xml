@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="task_name_placeholder">Task name…</string>
+    <string name="task_notes_placeholder">Add some notes…</string>
+    <string name="new_task">New task</string>
+    <string name="task_form_title_field_placeholder">Title</string>
+    <string name="task_form_notes_field_placeholder">Notes</string>
+    <string name="task_form_deadline_field_placeholder_empty">Configure a deadline for your task</string>
+    <string name="task_form_reminders_field_placeholder">Reminders</string>
+    <string name="task_form_priority_field_placeholder">Priority</string>
+    <string name="form_error_mandatory">Mandatory</string>
+    <string name="task_form_deadline_picker_option_next_week">In one week (%1$s).</string>
+    <string name="task_form_deadline_picker_option_end_week">At the end of this week (%1$s).</string>
+    <string name="task_form_deadline_picker_option_custom">Set a custom day.</string>
+    <plurals name="task_form_deadline_field_placeholder_full">
+        <item quantity="zero">The task ends today!</item>
+        <item quantity="one">The task will end tomorrow!</item>
+        <item quantity="other">Deadline set on %1$s.\nRemaining days: %2$s</item>
+    </plurals>
+</resources>
