@@ -2,12 +2,26 @@ package com.splanes.weektasks.ui.feature.newtaskform.todotask.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.detectTapGestures
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material.ExperimentalMaterialApi
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
+import androidx.compose.material3.Divider
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.input.pointer.pointerInput
@@ -19,13 +33,26 @@ import com.splanes.toolkit.compose.base_arch.feature.presentation.component.cont
 import com.splanes.toolkit.compose.base_arch.logger.e
 import com.splanes.toolkit.compose.ui.components.common.utils.color.alpha
 import com.splanes.weektasks.domain.feature.task.model.Task
-import com.splanes.weektasks.ui.common.utils.*
+import com.splanes.weektasks.ui.common.spacer.row.Weight
+import com.splanes.weektasks.ui.common.utils.Drawables
 import com.splanes.weektasks.ui.common.utils.Strings
+import com.splanes.weektasks.ui.common.utils.body
+import com.splanes.weektasks.ui.common.utils.color
+import com.splanes.weektasks.ui.common.utils.dp
+import com.splanes.weektasks.ui.common.utils.painter
+import com.splanes.weektasks.ui.common.utils.shape
+import com.splanes.weektasks.ui.common.utils.string
 import com.splanes.weektasks.ui.feature.newtaskform.common.component.TaskDeadlineFormField
 import com.splanes.weektasks.ui.feature.newtaskform.common.component.TaskNotesFormField
 import com.splanes.weektasks.ui.feature.newtaskform.common.component.TaskRemindersFormField
 import com.splanes.weektasks.ui.feature.newtaskform.common.component.TaskTitleAndPriorityFormField
-import com.splanes.weektasks.ui.feature.newtaskform.todotask.contract.*
+import com.splanes.weektasks.ui.feature.newtaskform.todotask.contract.NewTodoTaskFormEvent
+import com.splanes.weektasks.ui.feature.newtaskform.todotask.contract.NewTodoTaskFormField
+import com.splanes.weektasks.ui.feature.newtaskform.todotask.contract.NewTodoTaskFormUiModel
+import com.splanes.weektasks.ui.feature.newtaskform.todotask.contract.OnFieldChanged
+import com.splanes.weektasks.ui.feature.newtaskform.todotask.contract.OnSubmit
+import com.splanes.weektasks.ui.feature.newtaskform.todotask.contract.OnTaskCreated
+import com.splanes.weektasks.ui.feature.newtaskform.todotask.contract.OnTaskCreationError
 import com.splanes.weektasks.ui.feature.newtaskform.todotask.viewmodel.NewTodoTaskViewModel
 
 @OptIn(ExperimentalMaterialApi::class)
@@ -91,7 +118,7 @@ fun NewTodoTaskForm(onNewTaskCreated: () -> Unit) {
                         onSheetHeightChanged(!isFullScreen)
                     }
                 )
-                Spacer(modifier = Modifier.weight(1f))
+                Weight()
                 TextButton(
                     modifier = Modifier
                         .padding(top = dp { small }, end = dp { small })

@@ -5,16 +5,14 @@ import com.splanes.toolkit.compose.base_arch.feature.domain.common.datetime.time
 import com.splanes.toolkit.compose.base_arch.feature.domain.common.datetime.timestamp.now
 import com.splanes.toolkit.compose.base_arch.feature.domain.usecase.UseCase
 import com.splanes.toolkit.compose.base_arch.feature.domain.usecase.utils.doOnSuccess
-import com.splanes.toolkit.compose.base_arch.feature.domain.usecase.utils.map
 import com.splanes.toolkit.compose.base_arch.feature.presentation.component.contract.UiState
 import com.splanes.toolkit.compose.base_arch.feature.presentation.component.viewmodel.ComponentViewModel
+import com.splanes.weektasks.domain.feature.task.model.Task
 import com.splanes.weektasks.domain.feature.task.todotask.model.TodoTask
 import com.splanes.weektasks.domain.feature.task.todotask.usecase.FetchTodoTasksUseCase
 import com.splanes.weektasks.ui.feature.dashboard.contract.DashboardEvent
 import com.splanes.weektasks.ui.feature.dashboard.contract.DashboardSideEffect
 import com.splanes.weektasks.ui.feature.dashboard.contract.DashboardUiModel
-import com.splanes.weektasks.ui.feature.newtaskform.todotask.contract.OnTaskCreated
-import com.splanes.weektasks.ui.feature.newtaskform.todotask.contract.OnTaskCreationError
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -34,6 +32,7 @@ class DashboardViewModel @Inject constructor(
             DashboardEvent.NewDailyTask -> onNewTask(isTodoTask = false)
             DashboardEvent.RemoveTasksSelected -> onRemoveSelectedTasks()
             DashboardEvent.LoadTasks -> onLoadTasks()
+            is DashboardEvent.UpdateTask -> onUpdateTask(uiEvent.task)
         }
     }
 
@@ -56,5 +55,9 @@ class DashboardViewModel @Inject constructor(
 
     private fun handleLoadedTasksResult(result: UseCase.Result<List<TodoTask>>) {
         result.doOnSuccess { tasks -> updateUiModel { from -> from.copy(todoTasks = tasks) } }
+    }
+
+    private fun onUpdateTask(task: Task) {
+
     }
 }

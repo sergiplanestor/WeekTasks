@@ -4,14 +4,22 @@ import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material.AlertDialog
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -21,11 +29,33 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.splanes.toolkit.compose.ui.components.common.utils.color.alpha
 import com.splanes.toolkit.compose.ui.components.common.utils.color.composite
-import com.splanes.weektasks.domain.common.date.*
+import com.splanes.weektasks.domain.common.date.calendar
+import com.splanes.weektasks.domain.common.date.daysTo
+import com.splanes.weektasks.domain.common.date.endOfWeek
+import com.splanes.weektasks.domain.common.date.isEndOfWeek
+import com.splanes.weektasks.domain.common.date.isNextWeek
+import com.splanes.weektasks.domain.common.date.nextWeek
+import com.splanes.weektasks.domain.common.date.toCalendar
 import com.splanes.weektasks.ui.common.calendar.Calendar
-import com.splanes.weektasks.ui.common.utils.*
+import com.splanes.weektasks.ui.common.spacer.VerticalSpace
+import com.splanes.weektasks.ui.common.spacer.column.Space
+import com.splanes.weektasks.ui.common.spacer.row.Weight
+import com.splanes.weektasks.ui.common.utils.Drawables
+import com.splanes.weektasks.ui.common.utils.Plurals
+import com.splanes.weektasks.ui.common.utils.Strings
+import com.splanes.weektasks.ui.common.utils.body
+import com.splanes.weektasks.ui.common.utils.color
+import com.splanes.weektasks.ui.common.utils.dp
+import com.splanes.weektasks.ui.common.utils.format
+import com.splanes.weektasks.ui.common.utils.formatCalendar
+import com.splanes.weektasks.ui.common.utils.headline
+import com.splanes.weektasks.ui.common.utils.painter
+import com.splanes.weektasks.ui.common.utils.resources
+import com.splanes.weektasks.ui.common.utils.shape
+import com.splanes.weektasks.ui.common.utils.string
+import com.splanes.weektasks.ui.common.utils.title
 import io.github.boguszpawlowski.composecalendar.rememberSelectableCalendarState
-import java.util.*
+import java.util.Calendar
 
 @Composable
 fun TaskDeadlineFormField(
@@ -116,13 +146,13 @@ fun TaskDeadlineFormField(
                 },
                 text = {
                     Column {
-                        Spacer(modifier = Modifier.height(dp { medium }))
+                        Space { medium }
                         Calendar(
                             calendarState = calendarState,
                             daySelectionContainerColor = color { tertiary },
                             daySelectionContentColor = color { onTertiary }
                         )
-                        Spacer(modifier = Modifier.height(dp { medium }))
+                        Space { medium }
                     }
                 },
                 buttons = {
@@ -141,7 +171,7 @@ fun TaskDeadlineFormField(
                             )
                         }
 
-                        Spacer(modifier = Modifier.weight(1f))
+                        Weight()
 
                         TextButton(
                             onClick = {
@@ -173,13 +203,15 @@ fun TaskDeadlinePicker(
 ) {
     LazyColumn(modifier = modifier) {
         itemsIndexed(DeadlinePickerOption.values()) { index, item ->
-            if (index == 0) Spacer(modifier = Modifier.height(dp { small }))
+            if (index == 0) {
+                VerticalSpace { small }
+            }
             TaskDeadlinePickerItem(
                 isSelected = selected == item.id,
                 text = item.text(),
                 onItemSelected = { onDeadlineOptionSelectedChanged(item.id) }
             )
-            Spacer(modifier = Modifier.height(dp { small }))
+            VerticalSpace { small }
         }
     }
 }

@@ -7,5 +7,6 @@
     <string name="daily">Daily</string>
     <string name="todo">ToDo</string>
     <string name="task_todo">Tasks ToDo</string>
+    <string name="task_overview_counter">%s tasks</string>
 
 </resources>

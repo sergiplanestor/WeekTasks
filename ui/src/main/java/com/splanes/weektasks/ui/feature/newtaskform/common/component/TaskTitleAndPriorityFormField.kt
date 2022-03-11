@@ -1,7 +1,11 @@
 package com.splanes.weektasks.ui.feature.newtaskform.common.component
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -11,27 +15,34 @@ import androidx.compose.material.TextFieldDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.focus.onFocusChanged
-import androidx.compose.ui.focus.onFocusEvent
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.unit.dp
 import com.splanes.toolkit.compose.ui.components.common.utils.color.alpha
 import com.splanes.toolkit.compose.ui.components.common.utils.color.composite
 import com.splanes.toolkit.compose.ui.theme.utils.accessors.Colors
-import com.splanes.toolkit.compose.ui.theme.utils.accessors.ComponentPaddings
 import com.splanes.toolkit.compose.ui.theme.utils.accessors.Headline
 import com.splanes.toolkit.compose.ui.theme.utils.accessors.Typographies
 import com.splanes.weektasks.domain.feature.task.model.Task
 import com.splanes.weektasks.ui.R
 import com.splanes.weektasks.ui.common.priority.color
 import com.splanes.weektasks.ui.common.priority.icon
-import com.splanes.weektasks.ui.common.utils.*
+import com.splanes.weektasks.ui.common.spacer.row.Space
+import com.splanes.weektasks.ui.common.utils.EnterTransitionType
+import com.splanes.weektasks.ui.common.utils.ExitTransitionType
+import com.splanes.weektasks.ui.common.utils.enterTransition
+import com.splanes.weektasks.ui.common.utils.exitTransition
+import com.splanes.weektasks.ui.common.utils.painter
+import com.splanes.weektasks.ui.common.utils.string
 
 @Composable
 fun TaskTitleAndPriorityFormField(
@@ -135,7 +146,7 @@ fun TaskPriorityPicker(
             LazyRow(verticalAlignment = Alignment.CenterVertically) {
                 itemsIndexed(Task.Priority.values().filter { it != priority }) { index, item ->
                     if (index == 0) {
-                        Spacer(modifier = Modifier.width(ComponentPaddings.mediumSmall))
+                        Space { mediumSmall }
                     }
                     TaskPriorityIcon(
                         tint = {

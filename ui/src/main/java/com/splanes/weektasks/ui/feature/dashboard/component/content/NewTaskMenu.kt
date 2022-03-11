@@ -5,13 +5,23 @@ import androidx.annotation.StringRes
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.FloatingActionButton
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Close
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -22,10 +32,18 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.splanes.toolkit.compose.ui.components.common.utils.color.alpha
 import com.splanes.toolkit.compose.ui.components.common.utils.color.composite
-import com.splanes.toolkit.compose.ui.theme.utils.accessors.*
+import com.splanes.toolkit.compose.ui.theme.utils.accessors.Colors
+import com.splanes.toolkit.compose.ui.theme.utils.accessors.ComponentPaddings
+import com.splanes.toolkit.compose.ui.theme.utils.accessors.Display
+import com.splanes.toolkit.compose.ui.theme.utils.accessors.Typographies
 import com.splanes.weektasks.domain.feature.task.model.Task
-import com.splanes.weektasks.ui.common.utils.*
+import com.splanes.weektasks.ui.common.spacer.column.Space
+import com.splanes.weektasks.ui.common.utils.Drawables
 import com.splanes.weektasks.ui.common.utils.Strings
+import com.splanes.weektasks.ui.common.utils.expandVertically
+import com.splanes.weektasks.ui.common.utils.painter
+import com.splanes.weektasks.ui.common.utils.shrinkVertically
+import com.splanes.weektasks.ui.common.utils.string
 import com.splanes.weektasks.ui.feature.newtaskform.common.component.Animated
 
 @Composable
@@ -122,14 +140,14 @@ fun MenuItems(
                 iconContentDescription = Strings.content_desc_add_new_todo_task,
                 onClick = { onItemClick(Task.Type.ToDo) }
             )
-            Spacer(modifier = Modifier.height(ComponentPaddings.mediumSmall))
+            Space { mediumSmall }
             NewTaskButton(
                 text = Strings.daily,
                 icon = Drawables.ic_task_event,
                 iconContentDescription = Strings.content_desc_add_new_daily_task,
                 onClick = { onItemClick(Task.Type.Daily) }
             )
-            Spacer(modifier = Modifier.height(ComponentPaddings.medium))
+            Space { medium }
         }
     }
 }

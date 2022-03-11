@@ -1,14 +1,32 @@
 package com.splanes.weektasks.ui.feature.newtaskform.todotask.component
 
-import androidx.compose.animation.*
 import androidx.compose.animation.core.tween
+import androidx.compose.animation.expandHorizontally
+import androidx.compose.animation.shrinkHorizontally
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.*
-import androidx.compose.material.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ColumnScope
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.material.Icon
+import androidx.compose.material.OutlinedTextField
+import androidx.compose.material.Text
+import androidx.compose.material.TextButton
 import androidx.compose.material3.Surface
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusState
@@ -18,16 +36,31 @@ import androidx.compose.ui.unit.sp
 import com.splanes.toolkit.compose.base_arch.feature.presentation.component.contract.UiState
 import com.splanes.toolkit.compose.ui.components.common.utils.color.alpha
 import com.splanes.toolkit.compose.ui.components.common.utils.color.composite
-import com.splanes.toolkit.compose.ui.theme.utils.accessors.*
+import com.splanes.toolkit.compose.ui.theme.utils.accessors.Body
+import com.splanes.toolkit.compose.ui.theme.utils.accessors.Colors
+import com.splanes.toolkit.compose.ui.theme.utils.accessors.ComponentPaddings
+import com.splanes.toolkit.compose.ui.theme.utils.accessors.Shapes
+import com.splanes.toolkit.compose.ui.theme.utils.accessors.Title
+import com.splanes.toolkit.compose.ui.theme.utils.accessors.Typographies
+import com.splanes.toolkit.compose.ui.theme.utils.accessors.ViewportPaddings
 import com.splanes.weektasks.domain.feature.task.model.Task
 import com.splanes.weektasks.ui.common.priority.icon
 import com.splanes.weektasks.ui.common.priority.name
+import com.splanes.weektasks.ui.common.spacer.column.Space
 import com.splanes.weektasks.ui.common.utils.Strings
 import com.splanes.weektasks.ui.common.utils.painter
 import com.splanes.weektasks.ui.common.utils.string
-import com.splanes.weektasks.ui.feature.newtaskform.common.component.*
+import com.splanes.weektasks.ui.feature.newtaskform.common.component.Animated
+import com.splanes.weektasks.ui.feature.newtaskform.common.component.TextFieldClearButton
+import com.splanes.weektasks.ui.feature.newtaskform.common.component.TextFieldError
+import com.splanes.weektasks.ui.feature.newtaskform.common.component.TextFieldTitle
+import com.splanes.weektasks.ui.feature.newtaskform.common.component.textFieldColors
 import com.splanes.weektasks.ui.feature.newtaskform.common.model.FormUiModel
-import com.splanes.weektasks.ui.feature.newtaskform.todotask.contract.*
+import com.splanes.weektasks.ui.feature.newtaskform.todotask.contract.NewTodoTaskFormEvent
+import com.splanes.weektasks.ui.feature.newtaskform.todotask.contract.NewTodoTaskFormField
+import com.splanes.weektasks.ui.feature.newtaskform.todotask.contract.NewTodoTaskFormUiModel
+import com.splanes.weektasks.ui.feature.newtaskform.todotask.contract.OnFieldChanged
+import com.splanes.weektasks.ui.feature.newtaskform.todotask.contract.OnSubmit
 import com.splanes.weektasks.ui.feature.newtaskform.todotask.viewmodel.NewTodoTaskViewModel
 
 @Composable
@@ -38,7 +71,7 @@ fun ColumnScope.NewTodoTaskFormContent(viewModel: NewTodoTaskViewModel) {
     if (uiState is UiState.Ready) {
         with(uiState.data) {
 
-            Spacer(modifier = Modifier.height(20.dp))
+            Space(20)
             TextField(
                 formUiModel = title,
                 onUiEvent = viewModel::onUiEvent

@@ -4,7 +4,12 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.IconButton
 import androidx.compose.material.icons.Icons
@@ -18,6 +23,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.unit.dp
 import com.splanes.toolkit.compose.ui.components.common.utils.color.alpha
+import com.splanes.weektasks.ui.common.spacer.row.Space
 import com.splanes.weektasks.ui.common.utils.color
 import com.splanes.weektasks.ui.common.utils.title
 import io.github.boguszpawlowski.composecalendar.CalendarState
@@ -71,7 +77,7 @@ fun MonthHeader(
                 .replaceFirstChar { it.titlecase() },
             style = title { large }
         )
-        Spacer(modifier = Modifier.width(8.dp))
+        Space(8)
         Text(
             text = monthState.currentMonth.year.toString(),
             style = title { large }

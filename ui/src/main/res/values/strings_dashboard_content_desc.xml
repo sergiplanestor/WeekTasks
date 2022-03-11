@@ -11,5 +11,4 @@
     <string name="content_desc_collapse_modal">Collapse modal</string>
     <string name="content_desc_expand_modal">Expand modal</string>
     <string name="content_desc_collapse_todo_tasks">Collapse todo tasks</string>
-    <string name="content_desc_expand_todo_tasks">Expand todo tasks</string>
 </resources>

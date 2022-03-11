@@ -16,9 +16,16 @@ import androidx.compose.ui.unit.dp
 import com.splanes.toolkit.compose.ui.components.common.utils.color.alpha
 import com.splanes.toolkit.compose.ui.components.common.utils.color.composite
 import com.splanes.toolkit.compose.ui.theme.feature.colors.ThemeColorScheme
-import com.splanes.toolkit.compose.ui.theme.feature.paddings.ThemePaddingScheme
-import com.splanes.toolkit.compose.ui.theme.feature.shapes.ThemeShapeScheme
-import com.splanes.toolkit.compose.ui.theme.utils.accessors.*
+import com.splanes.toolkit.compose.ui.theme.utils.accessors.Body
+import com.splanes.toolkit.compose.ui.theme.utils.accessors.Colors
+import com.splanes.toolkit.compose.ui.theme.utils.accessors.ComponentPaddings
+import com.splanes.toolkit.compose.ui.theme.utils.accessors.Display
+import com.splanes.toolkit.compose.ui.theme.utils.accessors.Headline
+import com.splanes.toolkit.compose.ui.theme.utils.accessors.Label
+import com.splanes.toolkit.compose.ui.theme.utils.accessors.Shapes
+import com.splanes.toolkit.compose.ui.theme.utils.accessors.Title
+import com.splanes.toolkit.compose.ui.theme.utils.accessors.Typographies
+import com.splanes.toolkit.compose.ui.theme.utils.accessors.ViewportPaddings
 import com.splanes.toolkit.compose.ui.theme.utils.size.UiSize
 
 typealias Strings = com.splanes.weektasks.ui.R.string
@@ -31,7 +38,7 @@ fun string(block: () -> Int): String =
 
 @Composable
 fun string(block: () -> Int, vararg args: Any): String =
-    stringResource(id = block(), formatArgs = args)
+    stringResource(id = block(), formatArgs = args.map { it.toString() }.toTypedArray())
 
 @Composable
 fun painter(block: () -> Int): Painter =

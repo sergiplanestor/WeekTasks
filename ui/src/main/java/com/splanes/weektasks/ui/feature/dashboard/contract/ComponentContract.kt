@@ -3,6 +3,7 @@ package com.splanes.weektasks.ui.feature.dashboard.contract
 import com.splanes.toolkit.compose.base_arch.feature.presentation.component.contract.UiEvent
 import com.splanes.toolkit.compose.base_arch.feature.presentation.component.contract.UiModel
 import com.splanes.toolkit.compose.base_arch.feature.presentation.component.contract.UiSideEffect
+import com.splanes.weektasks.domain.feature.task.model.Task
 import com.splanes.weektasks.domain.feature.task.todotask.model.TodoTask
 
 data class DashboardUiModel(
@@ -17,6 +18,7 @@ sealed class DashboardEvent : UiEvent {
     object NewDailyTask : NewTask()
     object RemoveTasksSelected : DashboardEvent()
     object LoadTasks : DashboardEvent()
+    data class UpdateTask(val task: Task) : DashboardEvent()
 }
 
 sealed class DashboardSideEffect : UiSideEffect {
