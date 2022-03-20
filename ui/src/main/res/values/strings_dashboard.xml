@@ -8,5 +8,7 @@
     <string name="todo">ToDo</string>
     <string name="task_todo">Tasks ToDo</string>
     <string name="task_overview_counter">%s tasks</string>
+    <string name="task_context_menu_filter">Filter</string>
+    <string name="task_context_menu_sort">Sort</string>
 
 </resources>

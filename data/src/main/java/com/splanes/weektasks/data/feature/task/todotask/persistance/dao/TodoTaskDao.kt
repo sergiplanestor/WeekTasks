@@ -24,4 +24,7 @@ interface TodoTaskDao {
 
     @Delete
     suspend fun delete(entity: TodoTaskEntity)
+
+    @Query(value = "DELETE FROM task_todo")
+    suspend fun deleteAll()
 }

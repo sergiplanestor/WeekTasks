@@ -15,5 +15,5 @@ data class TodoTask(
     override val createdOn: Long,
     override val updatedOn: Long
 ) : Task() {
-    override val type = Type.ToDo
+    override val type = ToDo
 }

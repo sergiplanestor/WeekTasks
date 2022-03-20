@@ -8,4 +8,8 @@ interface TodoTasksRepository {
     suspend fun create(task: TodoTask): TodoTask
     suspend fun update(task: TodoTask): TodoTask
     suspend fun delete(task: TodoTask): TodoTask
+
+    // Debug only
+    suspend fun populate()
+    suspend fun deleteAll()
 }

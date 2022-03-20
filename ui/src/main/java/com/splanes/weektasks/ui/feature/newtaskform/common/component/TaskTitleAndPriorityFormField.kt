@@ -34,15 +34,15 @@ import com.splanes.toolkit.compose.ui.theme.utils.accessors.Headline
 import com.splanes.toolkit.compose.ui.theme.utils.accessors.Typographies
 import com.splanes.weektasks.domain.feature.task.model.Task
 import com.splanes.weektasks.ui.R
-import com.splanes.weektasks.ui.common.priority.color
-import com.splanes.weektasks.ui.common.priority.icon
-import com.splanes.weektasks.ui.common.spacer.row.Space
-import com.splanes.weektasks.ui.common.utils.EnterTransitionType
-import com.splanes.weektasks.ui.common.utils.ExitTransitionType
-import com.splanes.weektasks.ui.common.utils.enterTransition
-import com.splanes.weektasks.ui.common.utils.exitTransition
-import com.splanes.weektasks.ui.common.utils.painter
-import com.splanes.weektasks.ui.common.utils.string
+import com.splanes.weektasks.ui.common.utils.task.ui.color
+import com.splanes.weektasks.ui.common.utils.task.ui.icon
+import com.splanes.weektasks.ui.common.component.spacer.row.Space
+import com.splanes.weektasks.ui.common.utils.transition.EnterTransitionType
+import com.splanes.weektasks.ui.common.utils.transition.ExitTransitionType
+import com.splanes.weektasks.ui.common.utils.transition.enterTransition
+import com.splanes.weektasks.ui.common.utils.transition.exitTransition
+import com.splanes.weektasks.ui.common.utils.resources.painter
+import com.splanes.weektasks.ui.common.utils.resources.string
 
 @Composable
 fun TaskTitleAndPriorityFormField(

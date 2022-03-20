@@ -27,12 +27,14 @@ abstract class Task {
         }
     }
 
-    enum class Type {
-        ToDo,
-        Daily
-    }
+    sealed class Type
+    object ToDo : Type()
+    object Scheduled : Type()
 
     companion object {
         const val NO_DEADLINE = -1
     }
 }
+
+fun Task.hasDeadline(): Boolean = deadline != -1L
+fun Task.hasUpdateDate(): Boolean = updatedOn != -1L

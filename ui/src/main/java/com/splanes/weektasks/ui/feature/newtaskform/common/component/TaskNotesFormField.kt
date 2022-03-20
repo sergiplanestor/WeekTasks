@@ -20,7 +20,12 @@ import androidx.compose.ui.unit.sp
 import com.splanes.toolkit.compose.ui.components.common.utils.color.alpha
 import com.splanes.toolkit.compose.ui.components.common.utils.color.composite
 import com.splanes.weektasks.ui.R
-import com.splanes.weektasks.ui.common.utils.*
+import com.splanes.weektasks.ui.common.utils.resources.Drawables
+import com.splanes.weektasks.ui.common.utils.resources.color
+import com.splanes.weektasks.ui.common.utils.resources.dp
+import com.splanes.weektasks.ui.common.utils.resources.painter
+import com.splanes.weektasks.ui.common.utils.resources.string
+import com.splanes.weektasks.ui.common.utils.resources.title
 
 @Composable
 fun TaskNotesFormField(

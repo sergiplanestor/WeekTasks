@@ -2,8 +2,6 @@ package com.splanes.weektasks.ui.feature.newtaskform.common.component
 
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
-import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -36,24 +34,26 @@ import com.splanes.weektasks.domain.common.date.isEndOfWeek
 import com.splanes.weektasks.domain.common.date.isNextWeek
 import com.splanes.weektasks.domain.common.date.nextWeek
 import com.splanes.weektasks.domain.common.date.toCalendar
-import com.splanes.weektasks.ui.common.calendar.Calendar
-import com.splanes.weektasks.ui.common.spacer.VerticalSpace
-import com.splanes.weektasks.ui.common.spacer.column.Space
-import com.splanes.weektasks.ui.common.spacer.row.Weight
-import com.splanes.weektasks.ui.common.utils.Drawables
-import com.splanes.weektasks.ui.common.utils.Plurals
-import com.splanes.weektasks.ui.common.utils.Strings
-import com.splanes.weektasks.ui.common.utils.body
-import com.splanes.weektasks.ui.common.utils.color
-import com.splanes.weektasks.ui.common.utils.dp
-import com.splanes.weektasks.ui.common.utils.format
-import com.splanes.weektasks.ui.common.utils.formatCalendar
-import com.splanes.weektasks.ui.common.utils.headline
-import com.splanes.weektasks.ui.common.utils.painter
-import com.splanes.weektasks.ui.common.utils.resources
-import com.splanes.weektasks.ui.common.utils.shape
-import com.splanes.weektasks.ui.common.utils.string
-import com.splanes.weektasks.ui.common.utils.title
+import com.splanes.weektasks.ui.common.component.calendar.Calendar
+import com.splanes.weektasks.ui.common.component.spacer.VerticalSpace
+import com.splanes.weektasks.ui.common.component.spacer.column.Space
+import com.splanes.weektasks.ui.common.component.spacer.row.Weight
+import com.splanes.weektasks.ui.common.utils.date.format
+import com.splanes.weektasks.ui.common.utils.date.formatCalendar
+import com.splanes.weektasks.ui.common.utils.modifier.interaction.interactionSource
+import com.splanes.weektasks.ui.common.utils.modifier.interaction.onClick
+import com.splanes.weektasks.ui.common.utils.resources.Drawables
+import com.splanes.weektasks.ui.common.utils.resources.Plurals
+import com.splanes.weektasks.ui.common.utils.resources.Strings
+import com.splanes.weektasks.ui.common.utils.resources.body
+import com.splanes.weektasks.ui.common.utils.resources.color
+import com.splanes.weektasks.ui.common.utils.resources.dp
+import com.splanes.weektasks.ui.common.utils.resources.headline
+import com.splanes.weektasks.ui.common.utils.resources.painter
+import com.splanes.weektasks.ui.common.utils.resources.resources
+import com.splanes.weektasks.ui.common.utils.resources.shape
+import com.splanes.weektasks.ui.common.utils.resources.string
+import com.splanes.weektasks.ui.common.utils.resources.title
 import io.github.boguszpawlowski.composecalendar.rememberSelectableCalendarState
 import java.util.Calendar
 
@@ -73,9 +73,8 @@ fun TaskDeadlineFormField(
     Row(
         modifier = modifier
             .fillMaxWidth()
-            .clickable(
-                indication = null,
-                interactionSource = MutableInteractionSource(),
+            .onClick(
+                interaction = interactionSource,
                 onClick = { if (!isFocused) onFocusChanged() }
             ),
         verticalAlignment = Alignment.CenterVertically
@@ -232,9 +231,8 @@ fun TaskDeadlinePickerItem(
                 shape = shape { medium }
             )
             .padding(horizontal = dp { small }, vertical = dp { smallTiny })
-            .clickable(
-                indication = null,
-                interactionSource = MutableInteractionSource(),
+            .onClick(
+                interaction = interactionSource,
                 role = Role.Button,
                 onClick = onItemSelected
             ),

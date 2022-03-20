@@ -25,9 +25,9 @@ import com.splanes.toolkit.compose.ui.theme.utils.accessors.ComponentPaddings
 import com.splanes.toolkit.compose.ui.theme.utils.accessors.Title
 import com.splanes.toolkit.compose.ui.theme.utils.accessors.Typographies
 import com.splanes.weektasks.ui.R
-import com.splanes.weektasks.ui.common.utils.Drawables
-import com.splanes.weektasks.ui.common.utils.painter
-import com.splanes.weektasks.ui.common.utils.string
+import com.splanes.weektasks.ui.common.utils.resources.Drawables
+import com.splanes.weektasks.ui.common.utils.resources.painter
+import com.splanes.weektasks.ui.common.utils.resources.string
 
 @Composable
 fun TaskRemindersFormField(

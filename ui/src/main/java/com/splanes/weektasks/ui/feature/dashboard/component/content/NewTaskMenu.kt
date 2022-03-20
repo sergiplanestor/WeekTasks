@@ -37,13 +37,13 @@ import com.splanes.toolkit.compose.ui.theme.utils.accessors.ComponentPaddings
 import com.splanes.toolkit.compose.ui.theme.utils.accessors.Display
 import com.splanes.toolkit.compose.ui.theme.utils.accessors.Typographies
 import com.splanes.weektasks.domain.feature.task.model.Task
-import com.splanes.weektasks.ui.common.spacer.column.Space
-import com.splanes.weektasks.ui.common.utils.Drawables
-import com.splanes.weektasks.ui.common.utils.Strings
-import com.splanes.weektasks.ui.common.utils.expandVertically
-import com.splanes.weektasks.ui.common.utils.painter
-import com.splanes.weektasks.ui.common.utils.shrinkVertically
-import com.splanes.weektasks.ui.common.utils.string
+import com.splanes.weektasks.ui.common.component.spacer.column.Space
+import com.splanes.weektasks.ui.common.utils.resources.Drawables
+import com.splanes.weektasks.ui.common.utils.resources.Strings
+import com.splanes.weektasks.ui.common.utils.resources.painter
+import com.splanes.weektasks.ui.common.utils.resources.string
+import com.splanes.weektasks.ui.common.utils.transition.expandVertically
+import com.splanes.weektasks.ui.common.utils.transition.shrinkVertically
 import com.splanes.weektasks.ui.feature.newtaskform.common.component.Animated
 
 @Composable
@@ -138,14 +138,14 @@ fun MenuItems(
                 text = Strings.todo,
                 icon = Drawables.ic_task_todo,
                 iconContentDescription = Strings.content_desc_add_new_todo_task,
-                onClick = { onItemClick(Task.Type.ToDo) }
+                onClick = { onItemClick(Task.ToDo) }
             )
             Space { mediumSmall }
             NewTaskButton(
                 text = Strings.daily,
                 icon = Drawables.ic_task_event,
                 iconContentDescription = Strings.content_desc_add_new_daily_task,
-                onClick = { onItemClick(Task.Type.Daily) }
+                onClick = { onItemClick(Task.Scheduled) }
             )
             Space { medium }
         }

@@ -3,12 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/D3V/Android/Apps/WeekTasks/ui/src/main/res/drawable/ic_check_circle.xml" value="0.1" />
         <entry key="..\:/D3V/Android/Apps/WeekTasks/ui/src/main/res/drawable/ic_chevron_down.xml" value="0.1315" />
         <entry key="..\:/D3V/Android/Apps/WeekTasks/ui/src/main/res/drawable/ic_chevron_up.xml" value="0.1315" />
+        <entry key="..\:/D3V/Android/Apps/WeekTasks/ui/src/main/res/drawable/ic_circle.xml" value="0.1" />
         <entry key="..\:/D3V/Android/Apps/WeekTasks/ui/src/main/res/drawable/ic_clear_circle.xml" value="0.1" />
         <entry key="..\:/D3V/Android/Apps/WeekTasks/ui/src/main/res/drawable/ic_collapse.xml" value="0.1265" />
         <entry key="..\:/D3V/Android/Apps/WeekTasks/ui/src/main/res/drawable/ic_expand.xml" value="0.1265" />
+        <entry key="..\:/D3V/Android/Apps/WeekTasks/ui/src/main/res/drawable/ic_filter.xml" value="0.1" />
         <entry key="..\:/D3V/Android/Apps/WeekTasks/ui/src/main/res/drawable/ic_menu_burger.xml" value="0.1" />
+        <entry key="..\:/D3V/Android/Apps/WeekTasks/ui/src/main/res/drawable/ic_menu_vertical.xml" value="0.1" />
         <entry key="..\:/D3V/Android/Apps/WeekTasks/ui/src/main/res/drawable/ic_notes.xml" value="0.2035" />
         <entry key="..\:/D3V/Android/Apps/WeekTasks/ui/src/main/res/drawable/ic_notification.xml" value="0.236" />
         <entry key="..\:/D3V/Android/Apps/WeekTasks/ui/src/main/res/drawable/ic_notification_active.xml" value="0.236" />
@@ -18,9 +22,11 @@
         <entry key="..\:/D3V/Android/Apps/WeekTasks/ui/src/main/res/drawable/ic_prior_low.xml" value="0.1" />
         <entry key="..\:/D3V/Android/Apps/WeekTasks/ui/src/main/res/drawable/ic_prior_medium.xml" value="0.1" />
         <entry key="..\:/D3V/Android/Apps/WeekTasks/ui/src/main/res/drawable/ic_prior_turtle.xml" value="0.1" />
+        <entry key="..\:/D3V/Android/Apps/WeekTasks/ui/src/main/res/drawable/ic_sort.xml" value="0.1" />
         <entry key="..\:/D3V/Android/Apps/WeekTasks/ui/src/main/res/drawable/ic_task_event.xml" value="0.236" />
         <entry key="..\:/D3V/Android/Apps/WeekTasks/ui/src/main/res/drawable/ic_task_todo.xml" value="0.236" />
         <entry key="..\:/D3V/Android/Apps/WeekTasks/ui/src/main/res/drawable/ic_timer.xml" value="0.236" />
+        <entry key="..\:/D3V/Android/Apps/WeekTasks/ui/src/main/res/drawable/ic_vertical_menu.xml" value="0.1" />
       </map>
     </option>
   </component>

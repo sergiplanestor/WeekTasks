@@ -1,10 +1,22 @@
 package com.splanes.weektasks.ui.feature.newtaskform.common.component
 
 import androidx.annotation.StringRes
-import androidx.compose.animation.*
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.AnimatedVisibilityScope
+import androidx.compose.animation.EnterTransition
+import androidx.compose.animation.ExitTransition
 import androidx.compose.animation.core.tween
-import androidx.compose.foundation.layout.*
-import androidx.compose.material.*
+import androidx.compose.animation.expandVertically
+import androidx.compose.animation.shrinkVertically
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
+import androidx.compose.material.Text
+import androidx.compose.material.TextFieldColors
+import androidx.compose.material.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -14,10 +26,14 @@ import androidx.compose.ui.unit.sp
 import com.splanes.toolkit.compose.ui.components.common.utils.color.composite
 import com.splanes.toolkit.compose.ui.components.feature.navhost.graph.transition.fadeIn
 import com.splanes.toolkit.compose.ui.components.feature.navhost.graph.transition.fadeOut
-import com.splanes.toolkit.compose.ui.theme.utils.accessors.*
-import com.splanes.weektasks.ui.common.utils.Drawables
-import com.splanes.weektasks.ui.common.utils.painter
-import com.splanes.weektasks.ui.common.utils.string
+import com.splanes.toolkit.compose.ui.theme.utils.accessors.Body
+import com.splanes.toolkit.compose.ui.theme.utils.accessors.Colors
+import com.splanes.toolkit.compose.ui.theme.utils.accessors.ComponentPaddings
+import com.splanes.toolkit.compose.ui.theme.utils.accessors.Title
+import com.splanes.toolkit.compose.ui.theme.utils.accessors.Typographies
+import com.splanes.weektasks.ui.common.utils.resources.Drawables
+import com.splanes.weektasks.ui.common.utils.resources.painter
+import com.splanes.weektasks.ui.common.utils.resources.string
 
 @Composable
 fun TextFieldTitle(

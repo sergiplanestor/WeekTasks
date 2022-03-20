@@ -20,6 +20,9 @@ android {
 }
 
 dependencies {
+
+    module(name = "utils", isApi = true)
+
     androidCore()
     androidRuntime()
 

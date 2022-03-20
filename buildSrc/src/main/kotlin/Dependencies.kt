@@ -16,6 +16,7 @@ object DependencyVersion {
     const val composeNavigation = "2.5.0-alpha02"
     const val composeAccompanistNavigationAnim = "0.24.2-alpha"
     const val composeSystemUi = "0.24.1-alpha"
+    const val composeMaterialIconsExt = "1.2.0-alpha05"
 
     const val hiltAndroid = "2.40.5"
     const val hiltViewModel = "1.0.0-alpha01"
@@ -36,24 +37,39 @@ object DependencyVersion {
 object Dependency {
 
     const val androidxCore = "androidx.core:core-ktx:${DependencyVersion.androidxCore}"
-    const val androidxRuntime = "androidx.lifecycle:lifecycle-runtime-ktx:${DependencyVersion.androidxRuntime}"
-    const val androidxExtensions = "androidx.lifecycle:lifecycle-extensions:${DependencyVersion.androidxExtensions}"
-    const val androidxViewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${DependencyVersion.androidxViewModel}"
+    const val androidxRuntime =
+        "androidx.lifecycle:lifecycle-runtime-ktx:${DependencyVersion.androidxRuntime}"
+    const val androidxExtensions =
+        "androidx.lifecycle:lifecycle-extensions:${DependencyVersion.androidxExtensions}"
+    const val androidxViewModel =
+        "androidx.lifecycle:lifecycle-viewmodel-ktx:${DependencyVersion.androidxViewModel}"
 
-    const val kotlinCoroutinesCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${DependencyVersion.kotlinCoroutines}"
-    const val kotlinCoroutinesAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${DependencyVersion.kotlinCoroutines}"
+    const val kotlinCoroutinesCore =
+        "org.jetbrains.kotlinx:kotlinx-coroutines-core:${DependencyVersion.kotlinCoroutines}"
+    const val kotlinCoroutinesAndroid =
+        "org.jetbrains.kotlinx:kotlinx-coroutines-android:${DependencyVersion.kotlinCoroutines}"
 
     const val timberLogger = "com.jakewharton.timber:timber:${DependencyVersion.timberLogger}"
 
     const val androidxComposeUi = "androidx.compose.ui:ui:${DependencyVersion.compose}"
-    const val androidxComposeMaterial = "androidx.compose.material:material:${DependencyVersion.composeMaterial}"
-    const val androidxComposeMaterial3 = "androidx.compose.material3:material3:${DependencyVersion.composeMaterial3}"
-    const val androidxComposeUiPreview = "androidx.compose.ui:ui-tooling-preview:${DependencyVersion.compose}"
-    const val androidxComposeActivity = "androidx.activity:activity-compose:${DependencyVersion.composeActivity}"
-    const val androidxComposeNavigation = "androidx.navigation:navigation-compose:${DependencyVersion.composeNavigation}"
-    const val composeAccompanistNavigationAnim = "com.google.accompanist:accompanist-navigation-animation:${DependencyVersion.composeAccompanistNavigationAnim}"
-    const val androidxComposeViewModel = "androidx.lifecycle:lifecycle-viewmodel-compose:${DependencyVersion.composeNavigation}"
-    const val composeSystemUi = "com.google.accompanist:accompanist-systemuicontroller:${DependencyVersion.composeSystemUi}"
+    const val androidxComposeMaterial =
+        "androidx.compose.material:material:${DependencyVersion.composeMaterial}"
+    const val androidxComposeMaterial3 =
+        "androidx.compose.material3:material3:${DependencyVersion.composeMaterial3}"
+    const val androidxComposeUiPreview =
+        "androidx.compose.ui:ui-tooling-preview:${DependencyVersion.compose}"
+    const val androidxComposeActivity =
+        "androidx.activity:activity-compose:${DependencyVersion.composeActivity}"
+    const val androidxComposeNavigation =
+        "androidx.navigation:navigation-compose:${DependencyVersion.composeNavigation}"
+    const val composeAccompanistNavigationAnim =
+        "com.google.accompanist:accompanist-navigation-animation:${DependencyVersion.composeAccompanistNavigationAnim}"
+    const val androidxComposeViewModel =
+        "androidx.lifecycle:lifecycle-viewmodel-compose:${DependencyVersion.composeNavigation}"
+    const val composeSystemUi =
+        "com.google.accompanist:accompanist-systemuicontroller:${DependencyVersion.composeSystemUi}"
+    const val composeMaterialIconsExt =
+        "androidx.compose.material:material-icons-extended:${DependencyVersion.composeMaterialIconsExt}"
 
     const val gson = "com.google.code.gson:gson:${DependencyVersion.gson}"
     const val roomRuntime = "androidx.room:room-runtime:${DependencyVersion.room}"
@@ -62,9 +78,12 @@ object Dependency {
     const val roomCompiler = "androidx.room:room-compiler:${DependencyVersion.room}"
 
     const val hiltAndroid = "com.google.dagger:hilt-android:${DependencyVersion.hiltAndroid}"
-    const val hiltCompiler = "com.google.dagger:hilt-android-compiler:${DependencyVersion.hiltAndroid}"
-    const val hiltViewModel = "androidx.hilt:hilt-lifecycle-viewmodel:${DependencyVersion.hiltViewModel}"
-    const val hiltComposeNavigation = "androidx.hilt:hilt-navigation-compose:${DependencyVersion.hiltCompose}"
+    const val hiltCompiler =
+        "com.google.dagger:hilt-android-compiler:${DependencyVersion.hiltAndroid}"
+    const val hiltViewModel =
+        "androidx.hilt:hilt-lifecycle-viewmodel:${DependencyVersion.hiltViewModel}"
+    const val hiltComposeNavigation =
+        "androidx.hilt:hilt-navigation-compose:${DependencyVersion.hiltCompose}"
 
     const val lottieCompose = "com.airbnb.android:lottie-compose:${DependencyVersion.lottieCompose}"
 
@@ -72,7 +91,8 @@ object Dependency {
     const val toolkitUiTheme = "${toolkit}:theme:${DependencyVersion.toolkitUiTheme}"
     const val toolkitBaseArch = "${toolkit}:base-arch:${DependencyVersion.toolkitBaseArch}"
 
-    const val calendarComposeComponent = "io.github.boguszpawlowski.composecalendar:composecalendar:${DependencyVersion.calendarComposeComponent}"
+    const val calendarComposeComponent =
+        "io.github.boguszpawlowski.composecalendar:composecalendar:${DependencyVersion.calendarComposeComponent}"
 }
 
 fun DependencyHandler.androidCore() {
@@ -130,6 +150,7 @@ fun DependencyHandler.composeBase(isMaterial3: Boolean = true) {
     impl(Dependency.androidxComposeUiPreview)
     composeMaterial()
     if (isMaterial3) composeMaterial3()
+    composeMaterialIconsExt()
 
     test(Test.androidxComposeJUnit, isUiTest = true)
 
@@ -142,6 +163,10 @@ fun DependencyHandler.composeMaterial() {
 
 fun DependencyHandler.composeMaterial3() {
     impl(Dependency.androidxComposeMaterial3)
+}
+
+fun DependencyHandler.composeMaterialIconsExt() {
+    impl(Dependency.composeMaterialIconsExt)
 }
 
 fun DependencyHandler.composeNavigation(isNavAnim: Boolean = true) {
@@ -205,9 +230,14 @@ object TestVersion {
 object Test {
     const val junit = "junit:junit:${TestVersion.junit}"
     const val androidxJUnit = "androidx.test.ext:junit:${TestVersion.androidxJUnit}"
-    const val androidxEspressoCore = "androidx.test.espresso:espresso-core:${TestVersion.androidxEspressoCore}"
-    const val androidxComposeJUnit = "androidx.compose.ui:ui-test-junit4:${TestVersion.androidxComposeJUnit}"
-    const val androidxComposeTooling = "androidx.compose.ui:ui-tooling:${TestVersion.androidxComposeTooling}"
-    const val hiltAndroidTesting = "com.google.dagger:hilt-android-testing:${TestVersion.hiltAndroid}"
-    const val hiltCompilerTesting = "com.google.dagger:hilt-android-compiler:${TestVersion.hiltAndroid}"
+    const val androidxEspressoCore =
+        "androidx.test.espresso:espresso-core:${TestVersion.androidxEspressoCore}"
+    const val androidxComposeJUnit =
+        "androidx.compose.ui:ui-test-junit4:${TestVersion.androidxComposeJUnit}"
+    const val androidxComposeTooling =
+        "androidx.compose.ui:ui-tooling:${TestVersion.androidxComposeTooling}"
+    const val hiltAndroidTesting =
+        "com.google.dagger:hilt-android-testing:${TestVersion.hiltAndroid}"
+    const val hiltCompilerTesting =
+        "com.google.dagger:hilt-android-compiler:${TestVersion.hiltAndroid}"
 }

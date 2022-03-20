@@ -5,7 +5,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.google.accompanist.systemuicontroller.SystemUiController
@@ -18,20 +17,21 @@ import com.splanes.weektasks.ui.feature.dashboard.viewmodel.DashboardViewModel
 fun DashboardComponent(uiController: SystemUiController) {
 
     val viewModel: DashboardViewModel = hiltViewModel()
-    val coroutineScope = rememberCoroutineScope()
     var isEditModeEnabled: Boolean by remember { mutableStateOf(false) }
     val onEditModeChanged: (isEnabled: Boolean) -> Unit = { isEditModeEnabled = it }
 
+    val uiModel = (viewModel.uiState.value as? UiState.Ready)?.data
+
     DashboardContainer(
         uiController = uiController,
-        coroutineScope = coroutineScope,
         isEditModeEnabled = isEditModeEnabled,
         onEditModeChanged = onEditModeChanged,
-        onUiEvent = viewModel::onUiEvent
+        onUiEvent = viewModel::onUiEvent,
+        modal = uiModel?.modal
     ) {
         (viewModel.uiState.value as? UiState.Ready)?.data?.run {
-            TaskTodoCard(todoTasks, viewModel::onUiEvent)
-            TaskScheduledCard()
+            TaskTodoCard(todoTasks, filters, viewModel::onUiEvent)
+            // TaskScheduledCard()
         }
     }
 }

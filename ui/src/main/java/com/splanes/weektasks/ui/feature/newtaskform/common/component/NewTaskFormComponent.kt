@@ -7,9 +7,9 @@ import com.splanes.weektasks.ui.feature.newtaskform.todotask.component.NewTodoTa
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun NewTaskForm(type: Task.Type, onNewTaskCreated: () -> Unit) {
-    when (type) {
-        Task.Type.ToDo -> NewTodoTaskForm(onNewTaskCreated)
-        Task.Type.Daily -> TODO() /* NewDailyTaskForm() */
+fun NewTaskFormModalComponent(taskType: Task.Type, onCreated: () -> Unit) {
+    when (taskType) {
+        Task.ToDo -> NewTodoTaskForm(onCreated)
+        Task.Scheduled -> TODO() /* NewDailyTaskForm() */
     }
 }
