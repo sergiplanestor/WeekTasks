@@ -26,9 +26,12 @@ import com.splanes.weektasks.ui.feature.dashboard.contract.RemoveDatabase
 import com.splanes.weektasks.ui.feature.dashboard.contract.RemoveFilters
 import com.splanes.weektasks.ui.feature.dashboard.contract.RemoveTasksSelected
 import com.splanes.weektasks.ui.feature.dashboard.contract.UpdateFilters
+import com.splanes.weektasks.ui.feature.dashboard.contract.UpdateSort
 import com.splanes.weektasks.ui.feature.dashboard.contract.UpdateTask
 import com.splanes.weektasks.ui.feature.filter.model.TaskFilter
 import com.splanes.weektasks.ui.feature.filter.model.filter
+import com.splanes.weektasks.ui.feature.sort.model.TaskSort
+import com.splanes.weektasks.ui.feature.sort.model.sort
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -50,6 +53,7 @@ class DashboardViewModel @Inject constructor(
             RemoveTasksSelected -> onRemoveSelectedTasks()
             LoadTasks -> onLoadTasks()
             is UpdateTask -> onUpdateTask(uiEvent.task)
+            is UpdateSort -> onUpdateSort(uiEvent.sort)
             is UpdateFilters -> onUpdateFilters(uiEvent.filter, uiEvent.isApplied)
             is DashboardModalEvent -> onModalStateChanged(uiEvent)
             RemoveFilters -> onRemoveFilters()
@@ -130,7 +134,10 @@ class DashboardViewModel @Inject constructor(
         updateUiModel { from ->
             with(from) {
                 copy(
-                    todoTasks = todoTasks.update().filter(filters)
+                    todoTasks = todoTasks
+                        .update()
+                        .filter(filters)
+                        .sort(sort)
                 )
             }
         }
@@ -146,6 +153,13 @@ class DashboardViewModel @Inject constructor(
                 )
                 else -> this
             }
+        }
+    }
+
+    private fun onUpdateSort(sort: TaskSort?) {
+        sort?.run {
+            updateUiModel { model -> model.copy(sort = this) }
+            onLoadTasks()
         }
     }
 
